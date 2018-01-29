@@ -16,7 +16,8 @@ namespace ATWPJWebService.Models
 
         //Navigational properties
         public virtual ICollection<Trip> Trips { get; set; }
-
+        public virtual ICollection<Report> Reports { get; set; }
+        public virtual ICollection<Request> Requests { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {

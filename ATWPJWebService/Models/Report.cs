@@ -5,19 +5,17 @@ using System.Web;
 
 namespace ATWPJWebService.Models
 {
-    public class Trip
+    public class Report
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime CreationDate { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool IsDone { get; set; }
 
+        //FK Photos
+        public int PhotoId { get; set; }
+        public virtual Photo Photo { get; set; }
 
         //FK zu AspNetUsers
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
-
-        //Nav prop
-        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

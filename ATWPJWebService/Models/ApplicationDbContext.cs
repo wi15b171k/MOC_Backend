@@ -21,6 +21,9 @@ namespace ATWPJWebService.Models
 
         //Custom Context
         public virtual DbSet<Trip> Trips { get; set; }
+        public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<Report> Reports { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
 
     }
 }
