@@ -9,6 +9,7 @@ namespace ATWPJWebService.Models
     {
         public int Id { get; set; }
         public bool IsDone { get; set; }
+        public string Comment { get; set; }
 
         //FK Photos
         public int PhotoId { get; set; }

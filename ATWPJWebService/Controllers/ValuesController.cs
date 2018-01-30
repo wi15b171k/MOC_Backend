@@ -24,6 +24,7 @@ namespace ATWPJWebService.Controllers
 
         // POST api/values
         public void Post([FromBody]string value)
+        //public void Post([FromBody]Testdata value)
         {
         }
 
