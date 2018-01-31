@@ -45,10 +45,17 @@ namespace ATWPJWebService.Controllers
                 trips = new List<TripSM>();
                 foreach (var item in result)
                 {
+                    //Check if trip is private
+                    if(item.IsPrivate == true && helper.isOwner(requestUserId, item.UserId) == false)
+                    {
+                        continue;   
+                    }
+                   
                     TripSM trip = new TripSM();
                     trip.Title = item.Title;
                     trip.TripId = item.Id;
                     trip.UserId = item.UserId;
+                    trip.isPrivate = item.IsPrivate;
 
                     foreach (var photo in item.Photos)
                     {
@@ -58,8 +65,8 @@ namespace ATWPJWebService.Controllers
                             Longitude = photo.Longitude
                         });
                     }
-                   
-                    trips.Add(trip);
+
+                    trips.Add(trip);                                      
                 }
             }
 

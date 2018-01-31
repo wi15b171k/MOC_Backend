@@ -39,6 +39,7 @@ namespace ATWPJWebService.Controllers
                 lastTrip.Title = result.Title;
                 lastTrip.TripId = result.Id;
                 lastTrip.UserId = result.UserId;
+                lastTrip.isPrivate = result.IsPrivate;
 
                 foreach (var item in result.Photos)
                 {
@@ -72,6 +73,13 @@ namespace ATWPJWebService.Controllers
             {
                 //Check User Credentials
                 IdentityHelper helper = new IdentityHelper();
+
+                //check if private
+                if (result.IsPrivate == true && helper.isOwner(userId, result.UserId) == false)
+                {
+                    return null;
+                }
+
                 var isAuthorized = helper.isFriendOrOwner(userId, result.UserId);
                 if(isAuthorized == false)
                 {
@@ -83,6 +91,7 @@ namespace ATWPJWebService.Controllers
                 trip.Title = result.Title;
                 trip.TripId = result.Id;
                 trip.UserId = result.UserId;
+                trip.isPrivate = result.IsPrivate;
 
                 foreach (var item in result.Photos)
                 {

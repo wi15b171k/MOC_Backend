@@ -16,7 +16,7 @@ namespace ATWPJWebService.Models.ServiceModels
         public string UserId { get; set; }
         public string Title { get; set; }
         public List<Coordinate> Coordinates { get; set; }
-        public int isPrivate { get; set; }
+        public bool isPrivate { get; set; }
 
     }
 

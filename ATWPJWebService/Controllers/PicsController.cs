@@ -28,7 +28,21 @@ namespace ATWPJWebService.Controllers
                             where t.Id == Id
                             select t;
 
+
+            var tripResult = queryTrip.FirstOrDefault<Trip>();
+            if(tripResult == null)
+            {
+                return null;
+            }
+
             IdentityHelper helper = new IdentityHelper();
+
+            //check if private
+            if (tripResult.IsPrivate == true && helper.isOwner(requestUserId, tripResult.UserId) == false)
+            {
+                return null;
+            }
+
             var isAuthorized = helper.isFriendOrOwner(requestUserId, queryTrip.FirstOrDefault<Trip>().UserId);
             if (isAuthorized == false)
             {
@@ -68,7 +82,7 @@ namespace ATWPJWebService.Controllers
         }
 
         // GET /api/pics/{tripId}?latitude={latitude}&longitude={longitude}/ - get pics by tripId and long and lat
-        //ACHTUNG: Abschließender slash bei URL ist wichtig!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //ACHTUNG: Abschließender slash bei URL ist wichtig wenn punkt als Trennzeichen verwendet wird!!!!!!!!!!!!!!!!!!!!
         [Route("api/Pics/{Id}/{latitude}/{longitude}")]
         public IEnumerable<PhotoSM> Get(int Id, string latitude, string longitude)
         {
@@ -80,7 +94,21 @@ namespace ATWPJWebService.Controllers
                             where t.Id == Id
                             select t;
 
+
+            var tripResult = queryTrip.FirstOrDefault<Trip>();
+            if (tripResult == null)
+            {
+                return null;
+            }
+
             IdentityHelper helper = new IdentityHelper();
+
+            //check if private
+            if (tripResult.IsPrivate == true && helper.isOwner(requestUserId, tripResult.UserId) == false)
+            {
+                return null;
+            }
+
             var isAuthorized = helper.isFriendOrOwner(requestUserId, queryTrip.FirstOrDefault<Trip>().UserId);
             if (isAuthorized == false)
             {

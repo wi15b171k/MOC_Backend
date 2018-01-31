@@ -291,7 +291,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\IdentityHelper.cs" />
+    <Compile Include="Helpers\IdentityHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Report.cs" />
@@ -365,7 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
