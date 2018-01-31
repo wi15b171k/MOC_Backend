@@ -153,128 +153,128 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo1.jpg",
-                    Longitude = -73.935242f,
-                    Latitude = 40.730610f,
+                    Longitude = -73.935242,
+                    Latitude = 40.730610,
                     TripId = 1
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo2.jpg",
-                    Longitude = -73.935242f,
-                    Latitude = 40.730610f,
+                    Longitude = -73.935242,
+                    Latitude = 40.730610,
                     TripId = 1
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo3.jpg",
-                    Longitude = -73.935242f,
-                    Latitude = 40.730610f,
+                    Longitude = -73.935242,
+                    Latitude = 40.730610,
                     TripId = 1
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo4.jpg",
-                    Longitude = -73.935242f,
-                    Latitude = 40.730610f,
+                    Longitude = -73.935242,
+                    Latitude = 40.730610,
                     TripId = 1
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo5.jpg",
-                    Longitude = -118.243683f,
-                    Latitude = 34.052235f,
+                    Longitude = -118.243683,
+                    Latitude = 34.052235,
                     TripId = 2
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo6.jpg",
-                    Longitude = -118.243683f,
-                    Latitude = 34.052235f,
+                    Longitude = -118.243683,
+                    Latitude = 34.052235,
                     TripId = 2
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo7.jpg",
-                    Longitude = -118.243683f,
-                    Latitude = 34.052235f,
+                    Longitude = -118.243683,
+                    Latitude = 34.052235,
                     TripId = 2
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo8.jpg",
-                    Longitude = -118.243683f,
-                    Latitude = 34.052235f,
+                    Longitude = -118.243683,
+                    Latitude = 34.052235,
                     TripId = 2
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo9.jpg",
-                    Longitude = 16.363449f,
-                    Latitude = 48.210033f,
+                    Longitude = 16.363449,
+                    Latitude = 48.210033,
                     TripId = 3
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo10.jpg",
-                    Longitude = 16.363449f,
-                    Latitude = 48.210033f,
+                    Longitude = 16.363449,
+                    Latitude = 48.210033,
                     TripId = 3
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo11.jpg",
-                    Longitude = 16.363449f,
-                    Latitude = 48.210033f,
+                    Longitude = 16.363449,
+                    Latitude = 48.210033,
                     TripId = 3
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo12.jpg",
-                    Longitude = 16.363449f,
-                    Latitude = 48.210033f,
+                    Longitude = 16.363449,
+                    Latitude = 48.210033,
                     TripId = 3
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo13.jpg",
-                    Longitude = 13.033229f,
-                    Latitude = 47.811195f,
+                    Longitude = 13.033229,
+                    Latitude = 47.811195,
                     TripId = 4
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo14.jpg",
-                    Longitude = 13.033229f,
-                    Latitude = 47.811195f,
+                    Longitude = 13.033229,
+                    Latitude = 47.811195,
                     TripId = 4
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo15.jpg",
-                    Longitude = 13.033229f,
-                    Latitude = 47.811195f,
+                    Longitude = 13.033229,
+                    Latitude = 47.811195,
                     TripId = 4
                 },
 
                 new Models.Photo
                 {
                     FileName = @"C:\Photos\photo16.jpg",
-                    Longitude = 13.033229f,
-                    Latitude = 47.811195f,
+                    Longitude = 13.033229,
+                    Latitude = 47.811195,
                     TripId = 4
                 }
             );

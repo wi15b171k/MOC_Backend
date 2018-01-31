@@ -15,7 +15,7 @@ namespace ATWPJWebService.Models.ServiceModels
 
     }
 
-    public class AddReportSM
+    public class ReportAddSM
     {
         public int PicId { get; set; }
         public string Comment { get; set; }

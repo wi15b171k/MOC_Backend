@@ -236,6 +236,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PicController.cs" />
     <Compile Include="Controllers\PicsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\RequestsController.cs" />
@@ -282,10 +283,15 @@
     <Compile Include="Migrations\201801301948356_ReportComment.Designer.cs">
       <DependentUpon>201801301948356_ReportComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801311722070_PicsDouble.cs" />
+    <Compile Include="Migrations\201801311722070_PicsDouble.Designer.cs">
+      <DependentUpon>201801311722070_PicsDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\IdentityHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Report.cs" />
@@ -359,6 +365,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -395,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801301948356_ReportComment.resx">
       <DependentUpon>201801301948356_ReportComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801311722070_PicsDouble.resx">
+      <DependentUpon>201801311722070_PicsDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

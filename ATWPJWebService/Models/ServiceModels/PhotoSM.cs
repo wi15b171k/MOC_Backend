@@ -8,11 +8,7 @@ namespace ATWPJWebService.Models.ServiceModels
     public class PhotoSM
     {
         public int PhotoId { get; set; }
-        public int UserId { get; set; }
+        public int TripId { get; set; }
         public Coordinate Coordinate { get; set; }
-
-        //public binary file
-        //...
-
     }
 }
