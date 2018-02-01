@@ -152,7 +152,7 @@ namespace ATWPJWebService.Migrations
             context.Photos.AddOrUpdate(i => i.FileName,
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo1.jpg",
+                    FileName = @"photo1.jpg",
                     Longitude = -73.935242,
                     Latitude = 40.730610,
                     TripId = 1
@@ -160,7 +160,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo2.jpg",
+                    FileName = @"photo2.jpg",
                     Longitude = -73.935242,
                     Latitude = 40.730610,
                     TripId = 1
@@ -168,7 +168,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo3.jpg",
+                    FileName = @"photo3.jpg",
                     Longitude = -73.935242,
                     Latitude = 40.730610,
                     TripId = 1
@@ -176,7 +176,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo4.jpg",
+                    FileName = @"photo4.jpg",
                     Longitude = -73.935242,
                     Latitude = 40.730610,
                     TripId = 1
@@ -184,7 +184,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo5.jpg",
+                    FileName = @"photo5.jpg",
                     Longitude = -118.243683,
                     Latitude = 34.052235,
                     TripId = 2
@@ -192,7 +192,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo6.jpg",
+                    FileName = @"photo6.jpg",
                     Longitude = -118.243683,
                     Latitude = 34.052235,
                     TripId = 2
@@ -200,7 +200,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo7.jpg",
+                    FileName = @"photo7.jpg",
                     Longitude = -118.243683,
                     Latitude = 34.052235,
                     TripId = 2
@@ -208,7 +208,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo8.jpg",
+                    FileName = @"photo8.jpg",
                     Longitude = -118.243683,
                     Latitude = 34.052235,
                     TripId = 2
@@ -216,7 +216,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo9.jpg",
+                    FileName = @"photo9.jpg",
                     Longitude = 16.363449,
                     Latitude = 48.210033,
                     TripId = 3
@@ -224,7 +224,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo10.jpg",
+                    FileName = @"photo10.jpg",
                     Longitude = 16.363449,
                     Latitude = 48.210033,
                     TripId = 3
@@ -232,7 +232,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo11.jpg",
+                    FileName = @"photo11.jpg",
                     Longitude = 16.363449,
                     Latitude = 48.210033,
                     TripId = 3
@@ -240,7 +240,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo12.jpg",
+                    FileName = @"photo12.jpg",
                     Longitude = 16.363449,
                     Latitude = 48.210033,
                     TripId = 3
@@ -248,7 +248,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo13.jpg",
+                    FileName = @"photo13.jpg",
                     Longitude = 13.033229,
                     Latitude = 47.811195,
                     TripId = 4
@@ -256,7 +256,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo14.jpg",
+                    FileName = @"photo14.jpg",
                     Longitude = 13.033229,
                     Latitude = 47.811195,
                     TripId = 4
@@ -264,7 +264,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo15.jpg",
+                    FileName = @"photo15.jpg",
                     Longitude = 13.033229,
                     Latitude = 47.811195,
                     TripId = 4
@@ -272,7 +272,7 @@ namespace ATWPJWebService.Migrations
 
                 new Models.Photo
                 {
-                    FileName = @"C:\Photos\photo16.jpg",
+                    FileName = @"photo16.jpg",
                     Longitude = 13.033229,
                     Latitude = 47.811195,
                     TripId = 4
