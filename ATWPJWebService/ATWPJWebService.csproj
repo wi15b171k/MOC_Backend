@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -247,6 +248,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CoordinateHelper.cs" />
     <Compile Include="Helpers\PictureHelper.cs" />
     <Compile Include="Migrations\201801271529412_Initial.cs" />
     <Compile Include="Migrations\201801271529412_Initial.Designer.cs">

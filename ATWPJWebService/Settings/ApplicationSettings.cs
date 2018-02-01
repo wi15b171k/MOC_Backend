@@ -9,6 +9,10 @@ namespace ATWPJWebService.Settings
     {
         public static string FileRootDirectory = @"C:\Photos\";
 
+        //Radius in Meters
+        public static double PhotoGroupingRadius = 200;
+
+
 
 
     }
