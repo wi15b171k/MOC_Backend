@@ -8,8 +8,7 @@ namespace ATWPJWebService.Models.ServiceModels
     public class RequestSM
     {
         public int RequestId { get; set; }
-        public int FromUserId { get; set; }
-        public int ToUserId { get; set; }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

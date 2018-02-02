@@ -51,6 +51,8 @@ namespace ATWPJWebService.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
+        
+        /*
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
@@ -64,7 +66,7 @@ namespace ATWPJWebService.Controllers
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
-        }
+        }*/
 
         // POST api/Account/Logout
         [Route("Logout")]
@@ -74,6 +76,7 @@ namespace ATWPJWebService.Controllers
             return Ok();
         }
 
+        /*
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
@@ -112,7 +115,7 @@ namespace ATWPJWebService.Controllers
                 Logins = logins,
                 ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
             };
-        }
+        }*/
 
         // POST api/Account/ChangePassword
         [Route("ChangePassword")]
@@ -153,6 +156,7 @@ namespace ATWPJWebService.Controllers
             return Ok();
         }
 
+        /*
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -316,7 +320,7 @@ namespace ATWPJWebService.Controllers
             }
 
             return logins;
-        }
+        }*/
 
         // POST api/Account/Register
         [AllowAnonymous]
@@ -340,6 +344,7 @@ namespace ATWPJWebService.Controllers
             return Ok();
         }
 
+        /*
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -371,7 +376,7 @@ namespace ATWPJWebService.Controllers
                 return GetErrorResult(result); 
             }
             return Ok();
-        }
+        }*/
 
         protected override void Dispose(bool disposing)
         {

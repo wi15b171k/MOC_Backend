@@ -107,7 +107,7 @@ namespace ATWPJWebService.Controllers
         }
 
         // POST api/trip - add new trip
-        public void Post([FromBody]TripAddSM value)
+        public HttpResponseMessage Post([FromBody]TripAddSM value)
         {
             //Get Id of current User
             var userId = User.Identity.GetUserId();
@@ -121,6 +121,7 @@ namespace ATWPJWebService.Controllers
             });
 
             db.SaveChanges();
+            return new HttpResponseMessage(HttpStatusCode.Created);
         }
     }
 }
