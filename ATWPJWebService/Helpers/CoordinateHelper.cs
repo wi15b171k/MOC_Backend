@@ -11,8 +11,12 @@ namespace ATWPJWebService.Helpers
 {
     public class CoordinateHelper
     {
-        private class PhotoDistance : Photo
+        private class PhotoDistance
         {
+            public int Id { get; set; }
+            public string FileName { get; set; }
+            public double Longitude { get; set; }
+            public double Latitude { get; set; }
             public double Distance { get; set; }
             public GeoCoordinate Coordinate { get; set; }
 
@@ -57,11 +61,7 @@ namespace ATWPJWebService.Helpers
 
 
             return null;
-        }
-
-        private 
-
-        
+        }   
     }
 
     
