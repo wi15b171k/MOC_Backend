@@ -11,108 +11,132 @@ namespace ATWPJWebService.Helpers
 {
     public class CoordinateHelper
     {
-        private List<Photo> groupedPhotos = null;
-        private PhotoDistance referencePhoto = null;
-        private List<PhotoDistance> photosInRadius = null;
+        private List<PhotoCalculation> photosInRadius = null;
+        private GeoCoordinate referenceCoordinate = null; 
 
-        private class PhotoDistance
+        private class PhotoCalculation
         {
             public int Id { get; set; }
-            public double Longitude { get; set; }
-            public double Latitude { get; set; }
             public double Distance { get; set; }
-            public GeoCoordinate Coordinate { get; set; }
-            public string FileName { get; set; }
-            public int TripId { get; set; }
-
+            public GeoCoordinate CoordinateOriginal { get; set; }
+            public GeoCoordinate CoordinateGrouping { get; set; }
         }
 
-        public List<Photo> GroupPhotosByCoordinates(List<Photo> photosOrig)
+        public List<Photo> GroupPhotosByCoordinates(List<Photo> photos)
         {
-            photosInRadius = new List<PhotoDistance>();
-            groupedPhotos = new List<Photo>();
-
             //Clone List
-            List<Photo> photos = new List<Photo>(photosOrig);
-            while(photos != null)
+            List<PhotoCalculation> photosGrouping = new List<PhotoCalculation> ();
+            foreach (var item in photos)
             {
-                //Fotos innerhalb des Radius finden
-                foreach (var item in photos)
+                photosGrouping.Add(new PhotoCalculation()
                 {
-                    //create objet
-                    PhotoDistance activePhoto = new PhotoDistance();
-                    activePhoto.Id = item.Id;
-                    activePhoto.FileName = item.FileName;
-                    activePhoto.TripId = item.TripId;
-                    activePhoto.Latitude = item.Latitude;
-                    activePhoto.Longitude = item.Longitude;
-                    activePhoto.Coordinate = new GeoCoordinate()
+                    Id = item.Id,
+                    CoordinateOriginal = new GeoCoordinate()
                     {
                         Latitude = item.Latitude,
                         Longitude = item.Longitude
-                    };
-
-                    if (referencePhoto == null)
+                    },
+                    CoordinateGrouping = new GeoCoordinate()
                     {
-                        referencePhoto = activePhoto;
+                        Latitude = item.Latitude,
+                        Longitude = item.Longitude
                     }
-                    else
+                });
+            }
+
+            while (photosGrouping.Count > 0)
+            {
+                referenceCoordinate = null;
+                photosInRadius = new List<PhotoCalculation>();
+
+                //Fotos innerhalb des Radius finden
+                foreach (var item in photosGrouping)
+                {
+                    //Create Reference Coordinate
+                    if (referenceCoordinate == null)
                     {
-                        //calculate distance
-                        activePhoto.Distance = referencePhoto.Coordinate.GetDistanceTo(activePhoto.Coordinate);
-                        if (activePhoto.Distance <= ApplicationSettings.PhotoGroupingRadius)
+                        referenceCoordinate = new GeoCoordinate()
                         {
-                            photosInRadius.Add(activePhoto);
-                        }
+                            Latitude = item.CoordinateGrouping.Latitude,
+                            Longitude = item.CoordinateGrouping.Longitude
+                        };
                     }
-                }
 
-                //Liste sortieren nach Distanz
-                List<PhotoDistance> photosInRadiusOrdered = photosInRadius.OrderBy(o => o.Distance).ToList();
-
-                //Nähesten Punkt wählen der nicht Null ist
-                PhotoDistance closestPhoto = null;
-                foreach (var item in photosInRadiusOrdered)
-                {
-                    if (item.Distance != 0)
+                    //Create objet
+                    PhotoCalculation activePhoto = new PhotoCalculation()
                     {
-                        closestPhoto = item;
+                        Id = item.Id,
+                        CoordinateOriginal = new GeoCoordinate()
+                        {
+                            Latitude = item.CoordinateOriginal.Latitude,
+                            Longitude = item.CoordinateOriginal.Longitude
+                        },
+                        CoordinateGrouping = new GeoCoordinate()
+                        {
+                            Latitude = item.CoordinateGrouping.Latitude,
+                            Longitude = item.CoordinateGrouping.Longitude
+                        }
+                    };
+                    
+                    //Calculate distance
+                    activePhoto.Distance = referenceCoordinate.GetDistanceTo(activePhoto.CoordinateGrouping);
+                    if (activePhoto.Distance <= ApplicationSettings.PhotoGroupingRadius)
+                    {
+                        photosInRadius.Add(activePhoto);
+                    }                    
+                }
+
+                //prüfen ob noch ein photo mit Distanz größer Null existierst
+                bool isGrouped = true;
+                foreach (var item in photosInRadius)
+                {
+                    if(item.Distance != 0)
+                    {
+                        isGrouped = false;
                     }
                 }
 
-                //Nur wenn Foto innerhalb Radius mit ungeleichen Koordinaten
-                if (closestPhoto != null)
+                if(isGrouped == false)
                 {
-                    //Neuen Koordinaten Berechnen
-                    double latNew = (referencePhoto.Latitude + closestPhoto.Latitude) / 2;
-                    double longNew = (referencePhoto.Longitude + closestPhoto.Longitude) / 2;
+                    //Neue berechnen über ganze Liste
+                    double latNew = 0;
+                    double longNew = 0;
 
-                    //Fotos in neue Liste speichern und aus alter Liste entfernen
-                    photos.Find(item => item.Id == referencePhoto.Id).Latitude = latNew;
-                    photos.Find(item => item.Id == closestPhoto.Id).Latitude = latNew;
-                    photos.Find(item => item.Id == referencePhoto.Id).Longitude = longNew;
-                    photos.Find(item => item.Id == closestPhoto.Id).Longitude = longNew;
+                    foreach (var item in photosInRadius)
+                    {
+                        latNew = latNew + item.CoordinateOriginal.Latitude;
+                        longNew = longNew + item.CoordinateOriginal.Longitude;
+                    }
+
+                    latNew = latNew / photosInRadius.Count;
+                    longNew = longNew / photosInRadius.Count;
+
+                    //Coordinaten von photos änndern
+                    foreach (var item in photosInRadius)
+                    {
+                        var photo = photosGrouping.Single(p => p.Id == item.Id);
+                        photo.CoordinateGrouping.Latitude = latNew;
+                        photo.CoordinateGrouping.Longitude = longNew;
+                    }
                 }
                 else
                 {
-                    //foreach (var item in photos)
-                    for (int i = photos.Count - 1; i >= 0; i--)
+                    //Wenn alle gruppiert, Fotos aus Liste löschen.
+                    foreach (var item in photosInRadius)
                     {
-                        if (photos[i].Latitude == referencePhoto.Latitude && photos[i].Longitude == referencePhoto.Longitude)
-                        {
-                            //Update orgi List
-                            photosOrig.Single(orig => orig.Id == photos[i].Id).Latitude = referencePhoto.Latitude;
-                            photosOrig.Single(orig => orig.Id == photos[i].Id).Longitude = referencePhoto.Longitude;
+                        //Copie new coordinate to return list
+                        var photoOrig = photos.Single(po => po.Id == item.Id);
+                        photoOrig.Latitude = item.CoordinateGrouping.Latitude;
+                        photoOrig.Longitude = item.CoordinateGrouping.Longitude;
 
-                            //Revomve form copy
-                            photos.RemoveAt(i);
-                        }
+                        //delete photo from photos
+                        var photo = photosGrouping.Single(p => p.Id == item.Id);
+                        photosGrouping.Remove(photo);
                     }
                 }
-            }
-                
+            }               
             
-            return photosOrig;
+            return photos;
         }   
     }
 

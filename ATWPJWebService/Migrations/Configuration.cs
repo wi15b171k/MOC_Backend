@@ -161,7 +161,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo2.jpg",
-                    Longitude = -73.935242,
+                    Longitude = -73.935342,
                     Latitude = 40.730610,
                     TripId = 1
                 },
@@ -169,7 +169,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo3.jpg",
-                    Longitude = -73.935242,
+                    Longitude = -73.935442,
                     Latitude = 40.730610,
                     TripId = 1
                 },
@@ -177,7 +177,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo4.jpg",
-                    Longitude = -73.935242,
+                    Longitude = -73.739242,
                     Latitude = 40.730610,
                     TripId = 1
                 },
@@ -193,7 +193,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo6.jpg",
-                    Longitude = -118.243683,
+                    Longitude = -118.243783,
                     Latitude = 34.052235,
                     TripId = 2
                 },
@@ -201,7 +201,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo7.jpg",
-                    Longitude = -118.243683,
+                    Longitude = -118.253683,
                     Latitude = 34.052235,
                     TripId = 2
                 },
@@ -209,7 +209,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo8.jpg",
-                    Longitude = -118.243683,
+                    Longitude = -118.253783,
                     Latitude = 34.052235,
                     TripId = 2
                 },
@@ -225,7 +225,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo10.jpg",
-                    Longitude = 16.363449,
+                    Longitude = 16.363549,
                     Latitude = 48.210033,
                     TripId = 3
                 },
@@ -233,7 +233,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo11.jpg",
-                    Longitude = 16.363449,
+                    Longitude = 16.363649,
                     Latitude = 48.210033,
                     TripId = 3
                 },
@@ -241,7 +241,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo12.jpg",
-                    Longitude = 16.363449,
+                    Longitude = 16.363749,
                     Latitude = 48.210033,
                     TripId = 3
                 },
@@ -257,7 +257,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo14.jpg",
-                    Longitude = 13.033229,
+                    Longitude = 13.043229,
                     Latitude = 47.811195,
                     TripId = 4
                 },
@@ -265,7 +265,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo15.jpg",
-                    Longitude = 13.033229,
+                    Longitude = 13.043329,
                     Latitude = 47.811195,
                     TripId = 4
                 },
@@ -273,7 +273,7 @@ namespace ATWPJWebService.Migrations
                 new Models.Photo
                 {
                     FileName = @"photo16.jpg",
-                    Longitude = 13.033229,
+                    Longitude = 13.043429,
                     Latitude = 47.811195,
                     TripId = 4
                 }

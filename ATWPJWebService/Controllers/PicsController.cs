@@ -1,4 +1,5 @@
-﻿using ATWPJWebService.Models;
+﻿using ATWPJWebService.Helpers;
+using ATWPJWebService.Models;
 using ATWPJWebService.Models.ServiceModels;
 using Microsoft.AspNet.Identity;
 using System;
@@ -56,6 +57,10 @@ namespace ATWPJWebService.Controllers
                               select ph;
 
             var result = queryPhotos.ToList<Photo>();
+
+            //Group Coordinates
+            CoordinateHelper cHelper = new CoordinateHelper();
+            result = cHelper.GroupPhotosByCoordinates(result);
 
             List<PhotoSM> photos = null;
 
@@ -121,10 +126,14 @@ namespace ATWPJWebService.Controllers
 
             //Get Data From DB
             var queryPhotos = from ph in db.Photos
-                              where ph.TripId == Id && ph.Latitude == dLatitude && ph.Longitude == dLongitude
+                              where ph.TripId == Id
                               select ph;
 
             var result = queryPhotos.ToList<Photo>();
+
+            //Group Coordinates
+            CoordinateHelper cHelper = new CoordinateHelper();
+            result = cHelper.GroupPhotosByCoordinates(result);
 
             List<PhotoSM> photos = null;
 
@@ -134,16 +143,19 @@ namespace ATWPJWebService.Controllers
                 photos = new List<PhotoSM>();
                 foreach (var item in result)
                 {
-                    PhotoSM photo = new PhotoSM();
-                    photo.PhotoId = item.Id;
-                    photo.TripId = item.TripId;
-                    photo.Coordinate = new Coordinate()
+                    if(item.Latitude == dLatitude && item.Longitude == dLongitude)
                     {
-                        Latitude = item.Latitude,
-                        Longitude = item.Longitude
-                    };
+                        PhotoSM photo = new PhotoSM();
+                        photo.PhotoId = item.Id;
+                        photo.TripId = item.TripId;
+                        photo.Coordinate = new Coordinate()
+                        {
+                            Latitude = item.Latitude,
+                            Longitude = item.Longitude
+                        };
 
-                    photos.Add(photo);
+                        photos.Add(photo);                
+                    }                  
                 }
             }
 

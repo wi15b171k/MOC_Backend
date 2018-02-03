@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using ATWPJWebService.Helpers;
 
 namespace ATWPJWebService.Controllers
 {
@@ -40,6 +41,11 @@ namespace ATWPJWebService.Controllers
                 lastTrip.TripId = result.Id;
                 lastTrip.UserId = result.UserId;
                 lastTrip.isPrivate = result.IsPrivate;
+
+                //Group Coordinates
+                List<Photo> groupPhotos = new List<Photo>(result.Photos);
+                CoordinateHelper cHelper = new CoordinateHelper();
+                result.Photos = cHelper.GroupPhotosByCoordinates(groupPhotos);
 
                 foreach (var item in result.Photos)
                 {
@@ -92,6 +98,11 @@ namespace ATWPJWebService.Controllers
                 trip.TripId = result.Id;
                 trip.UserId = result.UserId;
                 trip.isPrivate = result.IsPrivate;
+
+                //Group Coordinates
+                List<Photo> groupPhotos = new List<Photo>(result.Photos);
+                CoordinateHelper cHelper = new CoordinateHelper();
+                result.Photos = cHelper.GroupPhotosByCoordinates(groupPhotos);
 
                 foreach (var item in result.Photos)
                 {

@@ -1,4 +1,5 @@
-﻿using ATWPJWebService.Models;
+﻿using ATWPJWebService.Helpers;
+using ATWPJWebService.Models;
 using ATWPJWebService.Models.ServiceModels;
 using Microsoft.AspNet.Identity;
 using System;
@@ -56,6 +57,11 @@ namespace ATWPJWebService.Controllers
                     trip.TripId = item.Id;
                     trip.UserId = item.UserId;
                     trip.isPrivate = item.IsPrivate;
+
+                    //Group Coordinates
+                    List<Photo> groupPhotos = new List<Photo>(item.Photos);
+                    CoordinateHelper cHelper = new CoordinateHelper();
+                    item.Photos = cHelper.GroupPhotosByCoordinates(groupPhotos);
 
                     foreach (var photo in item.Photos)
                     {
