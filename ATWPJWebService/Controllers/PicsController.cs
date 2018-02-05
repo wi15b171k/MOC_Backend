@@ -53,7 +53,7 @@ namespace ATWPJWebService.Controllers
 
             //Get Data From DB
             var queryPhotos = from ph in db.Photos
-                              where ph.TripId == Id
+                              where ph.TripId == Id && ph.isDeleted == false
                               select ph;
 
             var result = queryPhotos.ToList<Photo>();
@@ -126,7 +126,7 @@ namespace ATWPJWebService.Controllers
 
             //Get Data From DB
             var queryPhotos = from ph in db.Photos
-                              where ph.TripId == Id
+                              where ph.TripId == Id && ph.isDeleted == false
                               select ph;
 
             var result = queryPhotos.ToList<Photo>();

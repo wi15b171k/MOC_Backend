@@ -1,5 +1,8 @@
 namespace ATWPJWebService.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -41,11 +44,22 @@ namespace ATWPJWebService.Migrations
             context.Database.ExecuteSqlCommand("DELETE FROM Requests");
             context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Requests', RESEED, 0)");
 
+            context.Database.ExecuteSqlCommand("DELETE FROM AspNetUserRoles");
+            context.Database.ExecuteSqlCommand("DELETE FROM AspNetRoles");
             context.Database.ExecuteSqlCommand("DELETE FROM AspNetUsers");
 
-    
+            context.Roles.AddOrUpdate(i => i.Id, 
+                new IdentityRole {
+                    Id = "846004c4-c444-4ae5-a063-c0401e03bc4f",
+                    Name = "admin"
+                });
 
+            context.SaveChanges();
+
+
+            
             context.Users.AddOrUpdate(i => i.Id,
+                /*
                 new Models.ApplicationUser
                 {
                     Id = "1fdea673-a5bd-435a-bdc2-0931a29b04b2",
@@ -60,7 +74,7 @@ namespace ATWPJWebService.Migrations
                     TwoFactorEnabled = false,
                     LockoutEnabled = false,
                     AccessFailedCount = 0
-                },
+                },*/
 
                 new Models.ApplicationUser
                 {
@@ -112,6 +126,33 @@ namespace ATWPJWebService.Migrations
             );
 
             context.SaveChanges();
+
+
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            if (!context.Users.Any(u => u.UserName == "flo@flo.at"))
+            {
+                var user = new ApplicationUser
+                {
+                    Id = "1fdea673-a5bd-435a-bdc2-0931a29b04b2",
+                    PasswordHash = "AHcaA2Vc7xK5T8XgO3Cj02eBfOqTgKiOedBaT/JY2VqvkloHfOYc2w3wCPqP83GWPw==",
+                    SecurityStamp = "da3e431e-5583-437c-ac27-dac743851908",
+                    Email = "flo@flo.at",
+                    UserName = "flo@flo.at",
+                    FirstName = "Florian",
+                    LastName = "Gasser",
+                    EmailConfirmed = false,
+                    PhoneNumberConfirmed = false,
+                    TwoFactorEnabled = false,
+                    LockoutEnabled = false,
+                    AccessFailedCount = 0
+                };
+
+                UserManager.Create(user);
+                UserManager.AddToRole(user.Id, "admin");
+            }
+
+            context.SaveChanges();
+
 
             context.Trips.AddOrUpdate(i => i.Title,
                 new Models.Trip

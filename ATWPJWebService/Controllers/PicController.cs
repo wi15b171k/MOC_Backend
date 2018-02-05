@@ -33,7 +33,7 @@ namespace ATWPJWebService.Controllers
 
             //Get Data From DB
             var queryPhoto = from p in db.Photos
-                             where p.Id == id
+                             where p.Id == id && p.isDeleted == false
                              select p;
 
             var resultPhoto = queryPhoto.FirstOrDefault<Photo>();
@@ -209,7 +209,7 @@ namespace ATWPJWebService.Controllers
 
             //Get Data From DB
             var queryPhoto = from p in db.Photos
-                             where p.Id == id
+                             where p.Id == id && p.isDeleted == false
                              select p;
 
             var resultPhoto = queryPhoto.FirstOrDefault<Photo>();
@@ -238,7 +238,7 @@ namespace ATWPJWebService.Controllers
                 return new HttpResponseMessage(HttpStatusCode.Unauthorized);
             }
 
-            db.Photos.Remove(resultPhoto);
+            resultPhoto.isDeleted = true;
             db.SaveChanges();
 
             try

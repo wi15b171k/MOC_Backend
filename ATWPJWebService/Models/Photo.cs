@@ -11,6 +11,7 @@ namespace ATWPJWebService.Models
         public string FileName { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
+        public bool isDeleted { get; set; }
 
         //FK zu AspNetUsers
         public int TripId { get; set; }

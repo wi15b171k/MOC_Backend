@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using ATWPJWebService.Models;
 using ATWPJWebService.Providers;
 using ATWPJWebService.Results;
+using System.Net;
 
 namespace ATWPJWebService.Controllers
 {
@@ -342,6 +343,42 @@ namespace ATWPJWebService.Controllers
             }
 
             return Ok();
+        }
+
+
+        // POST api/Account/RegisterAdmin
+        [Route("RegisterAdmin")]
+        [Authorize(Roles = "admin")]
+        public async Task<IHttpActionResult> RegisterAdmin(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            //Add to admin Group
+            UserManager.AddToRole(user.Id, "admin");
+
+            return Ok();
+        }
+
+        // GET api/Account/GetAdminState
+        [Route("GetAdminState")]
+        [Authorize(Roles = "admin")]
+        public HttpResponseMessage GetAdminState()
+        {
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         /*

@@ -289,6 +289,18 @@
     <Compile Include="Migrations\201801311722070_PicsDouble.Designer.cs">
       <DependentUpon>201801311722070_PicsDouble.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802051406439_ReportIsAllowed.cs" />
+    <Compile Include="Migrations\201802051406439_ReportIsAllowed.Designer.cs">
+      <DependentUpon>201802051406439_ReportIsAllowed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802051422507_PhotoIsdeleted.cs" />
+    <Compile Include="Migrations\201802051422507_PhotoIsdeleted.Designer.cs">
+      <DependentUpon>201802051422507_PhotoIsdeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802051442279_ReportIsForbidden.cs" />
+    <Compile Include="Migrations\201802051442279_ReportIsForbidden.Designer.cs">
+      <DependentUpon>201802051442279_ReportIsForbidden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -407,6 +419,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801311722070_PicsDouble.resx">
       <DependentUpon>201801311722070_PicsDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802051406439_ReportIsAllowed.resx">
+      <DependentUpon>201802051406439_ReportIsAllowed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802051422507_PhotoIsdeleted.resx">
+      <DependentUpon>201802051422507_PhotoIsdeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802051442279_ReportIsForbidden.resx">
+      <DependentUpon>201802051442279_ReportIsForbidden.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

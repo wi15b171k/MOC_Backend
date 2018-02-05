@@ -8,7 +8,10 @@ namespace ATWPJWebService.Models.ServiceModels
     public class ReportSM
     {
         public int ReportId { get; set; }
-        public int ReportingUserId { get; set; }
+        public string FirstNameReportingUser { get; set; }
+        public string LastNameReportingUser { get; set; }
+        public string FirstNameOwner { get; set; }
+        public string LastNameOwner { get; set; }
         public int PicId { get; set; }
         public string Comment { get; set; }
 
