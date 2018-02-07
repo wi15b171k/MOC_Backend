@@ -8,7 +8,36 @@
              d:DesignHeight="670" d:DesignWidth="764"
              DataContext="{Binding AdminAccounts, Mode=OneWay, Source={StaticResource Locator}}">
     <Grid>
-        <Button Content="Hallo" HorizontalAlignment="Left" Margin="250,175,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AnyBtnClickedCommand}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
+        <Label Content="Add Admin User" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center"/>
+        <Label Content="Firstname" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" Text="{Binding NewAdmin.FirstName}"/>
+
+        <Label Content="Lastname" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" Text="{Binding NewAdmin.LastName}"/>
+
+        <Label Content="E-Mail" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" Text="{Binding NewAdmin.Email}"/>
+
+        <Label Content="Password" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" Text="{Binding NewAdmin.Password}"/>
+
+        <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" Text="{Binding NewAdmin.ConfirmPassword}"/>
+
+        <Button Content="Save" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="75" Command="{Binding SaveBtnClickedCommand}" Grid.Row="6" Grid.Column="1"/>
     </Grid>
 </UserControl>

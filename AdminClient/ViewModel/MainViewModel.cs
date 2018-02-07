@@ -108,24 +108,21 @@ namespace AdminClient.ViewModel
 
         private bool CanExecuteReportedPicturesBtn()
         {
-            return true;
+            return Session.IsLoggedIn;
         }
 
         private void ShowViewReportedPictures()
         {
-            MessageBox.Show("Reported Pictures");
             CurrentVm = navService.NavigateTo("ReportedPictures");
-
         }
 
         private bool CanExecuteAdminAccountsBtn()
         {
-            return true;
+            return Session.IsLoggedIn;
         }
 
         private void ShowViewAdminAccounts()
         {
-            MessageBox.Show("Admin Accounts");
             CurrentVm = navService.NavigateTo("AdminAccounts");
         }
     }

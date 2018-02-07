@@ -56,17 +56,21 @@ namespace ATWPJWebService.Controllers
             //Check User Credentials
             IdentityHelper helper = new IdentityHelper();
 
-            //check if private
-            if (resultTrip.IsPrivate == true && helper.isOwner(userId, resultTrip.UserId) == false)
+            //If Admin
+            if(User.IsInRole("admin") == false)
             {
-                return new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            }
+                //check if private
+                if (resultTrip.IsPrivate == true && helper.isOwner(userId, resultTrip.UserId) == false)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.Unauthorized);
+                }
 
-            if (helper.isFriendOrOwner(userId, resultTrip.UserId) == false)
-            {
-                return new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            }
+                if (helper.isFriendOrOwner(userId, resultTrip.UserId) == false)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.Unauthorized);
+                }
 
+            }
 
             //Read File from Disk
             try

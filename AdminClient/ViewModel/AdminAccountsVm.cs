@@ -1,8 +1,10 @@
-﻿using AdminClient.Helpers;
+﻿using AdminClient.Communication;
+using AdminClient.Helpers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
+using Shared.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +19,77 @@ namespace AdminClient.ViewModel
         //Messenger
         Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
 
-        //Guid of interested Dataset
+        //Optianal Parameter
         private string parameter = "";
 
-        private RelayCommand anyBtnClickedCommand;
+        private RelayCommand saveBtnClickedCommand;
+        private AdminVm newAdmin;
+
+        private ServiceCommunication client;
+
 
         public AdminAccountsVm()
         {
-            //IMPORTANT!!!!!!!!!!!!!!!!!!!
-            //Set identifier parameter to: "ViewModel + Identifier", eg.: "DemoReceiverIdentifier"
+            //Get Parameter - optional - Set identifier parameter to: "ViewModel + Identifier", eg.: "DemoReceiverIdentifier"
             messenger.Register<PropertyChangedMessage<MessageContent>>(this, "AdminAccountsIdentifier", GetParameter);
 
-            AnyBtnClickedCommand = new RelayCommand(DoSomething);
+            NewAdmin = new AdminVm();
+            SaveBtnClickedCommand = new RelayCommand(SaveAdmin, CanExecuteSaveBtn);
+
+            client = new ServiceCommunication();
+        }
+
+
+        private void SaveAdmin()
+        {
+
+            client.AddNewAdminUser(new PersonAdminAddSM()
+            {
+                FirstName = NewAdmin.FirstName,
+                LastName = NewAdmin.LastName,
+                Email = NewAdmin.Email,
+                Password = NewAdmin.Password,
+                ConfirmPassword = NewAdmin.ConfirmPassword
+            });
+
+            NewAdmin.FirstName = "";
+            NewAdmin.LastName = "";
+            NewAdmin.Email = "";
+            NewAdmin.Password = "";
+            NewAdmin.ConfirmPassword = "";
+
+            RaisePropertyChanged(null);
+        }
+
+        private bool CanExecuteSaveBtn()
+        {
+            return true;
+        }
+
+        public RelayCommand SaveBtnClickedCommand
+        {
+            get
+            {
+                return saveBtnClickedCommand;
+            }
+
+            set
+            {
+                saveBtnClickedCommand = value;
+            }
+        }
+
+        public AdminVm NewAdmin
+        {
+            get
+            {
+                return newAdmin;
+            }
+
+            set
+            {
+                newAdmin = value;
+            }
         }
 
         private void GetParameter(PropertyChangedMessage<MessageContent> obj)
@@ -36,22 +97,6 @@ namespace AdminClient.ViewModel
             parameter = obj.NewValue.Param;
         }
 
-        private void DoSomething()
-        {
-            MessageBox.Show("Hi");
-        }
-
-        public RelayCommand AnyBtnClickedCommand
-        {
-            get
-            {
-                return anyBtnClickedCommand;
-            }
-
-            set
-            {
-                anyBtnClickedCommand = value;
-            }
-        }
+   
     }
 }

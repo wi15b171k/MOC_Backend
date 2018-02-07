@@ -15,13 +15,21 @@ namespace AdminClient.Communication
     {
         private static HttpClient client = new HttpClient();
 
+
         public ServiceCommunication()
+        {
+            
+        }
+
+        public bool InitClient()
         {
             //client.BaseAddress = new Uri("http://localhost:48897/");
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseAddress"]);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+
+            return true;
         }
 
         public bool LoginAdmin(string email, string password)

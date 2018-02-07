@@ -86,11 +86,14 @@
     </ApplicationDefinition>
     <Compile Include="Communication\ServiceCommunication.cs" />
     <Compile Include="Helpers\MessageContent.cs" />
+    <Compile Include="Helpers\Session.cs" />
     <Compile Include="ViewModel\AdminAccountsVm.cs" />
+    <Compile Include="ViewModel\AdminVm.cs" />
     <Compile Include="ViewModel\LoginVm.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NavigationService.cs" />
     <Compile Include="ViewModel\ReportedPicturesVm.cs" />
+    <Compile Include="ViewModel\ReportVm.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\AdminAccountsView.xaml.cs">
       <DependentUpon>AdminAccountsView.xaml</DependentUpon>

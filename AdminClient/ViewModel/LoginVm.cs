@@ -1,4 +1,5 @@
-﻿using AdminClient.Helpers;
+﻿using AdminClient.Communication;
+using AdminClient.Helpers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
@@ -9,17 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AdminClient.ViewModel
 {
     public class LoginVm : ViewModelBase
     {
         private RelayCommand<object> loginBtnClickedCmd;
+        private string loginMessage;
+        private string userName;
 
         Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
 
-        private string loginMessage;
-        private string userName;
+        private ServiceCommunication client;
 
         #region
         public RelayCommand<object> LoginBtnClickedCmd
@@ -66,24 +69,39 @@ namespace AdminClient.ViewModel
         {
             LoginBtnClickedCmd = new RelayCommand<object>(Login);
 
+            //Crate Instance of Communication
+            client = new ServiceCommunication();
+            client.InitClient();
+
         }
 
         
 
         private void Login(object obj)
         {
-            MessageBox.Show("Login clicked");
+            var passwordBox = obj as PasswordBox;
+            var password = passwordBox.Password;
 
-            //Check if Login correcnt
-            //...
-
-            //Setup Message Content
-            MessageContent content = new MessageContent()
+            //Verify Access Data
+            if(client.LoginAdmin(UserName, password) == true)
             {
-                ViewModelName = "ReportedPictures"
-            };
+                //Activate Buttons
+                Session.IsLoggedIn = true;
+                
+                //Setup Message Content
+                MessageContent content = new MessageContent()
+                {
+                    ViewModelName = "ReportedPictures"
+                };
 
-            messenger.Send<PropertyChangedMessage<MessageContent>>(new PropertyChangedMessage<MessageContent>(null, content, ""), "ChangeVm");
+                messenger.Send<PropertyChangedMessage<MessageContent>>(new PropertyChangedMessage<MessageContent>(null, content, ""), "ChangeVm");
+            }else
+            {
+                LoginMessage = "Login fehlgeschlagen!";
+                RaisePropertyChanged(null);
+            }
+
+            
         }
     }
 }
