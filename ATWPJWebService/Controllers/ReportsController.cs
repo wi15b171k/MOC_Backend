@@ -1,5 +1,5 @@
 ﻿using ATWPJWebService.Models;
-using ATWPJWebService.Models.ServiceModels;
+using Shared.ServiceModels;
 using ATWPJWebService.Settings;
 using Microsoft.AspNet.Identity;
 using System;

@@ -1,6 +1,6 @@
 ﻿using ATWPJWebService.Models;
-using ATWPJWebService.Models.ServiceModels;
 using Microsoft.AspNet.Identity;
+using Shared.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

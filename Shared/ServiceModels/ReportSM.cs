@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ATWPJWebService.Models.ServiceModels
+namespace Shared.ServiceModels
 {
     public class ReportSM
     {
@@ -23,7 +24,4 @@ namespace ATWPJWebService.Models.ServiceModels
         public int PicId { get; set; }
         public string Comment { get; set; }
     }
-
-
-
 }

@@ -310,12 +310,6 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Request.cs" />
-    <Compile Include="Models\ServiceModels\Coordinate.cs" />
-    <Compile Include="Models\ServiceModels\PersonSM.cs" />
-    <Compile Include="Models\ServiceModels\PhotoSM.cs" />
-    <Compile Include="Models\ServiceModels\ReportSM.cs" />
-    <Compile Include="Models\ServiceModels\RequestSM.cs" />
-    <Compile Include="Models\ServiceModels\TripSM.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -429,6 +423,12 @@
     <EmbeddedResource Include="Migrations\201802051442279_ReportIsForbidden.resx">
       <DependentUpon>201802051442279_ReportIsForbidden.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{66DE6A6F-0C7B-42E2-81D6-CBA6DF0BCE39}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

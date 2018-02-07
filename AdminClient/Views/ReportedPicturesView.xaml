@@ -19,5 +19,6 @@
             <RowDefinition Height="294*"/>
         </Grid.RowDefinitions>
         <Button Content="Allow Picture" Grid.Column="1" HorizontalAlignment="Left" Margin="93,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Command="{Binding ShowParamBtnClickedCommand}"/>
+        <Image x:Name="image" Grid.Column="2" HorizontalAlignment="Left" Height="247" Margin="73,84,0,0" Grid.Row="2" VerticalAlignment="Top" Width="225"/>
     </Grid>
 </UserControl>

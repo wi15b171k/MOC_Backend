@@ -1,5 +1,5 @@
 ﻿using ATWPJWebService.Models;
-using ATWPJWebService.Models.ServiceModels;
+using Shared.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
