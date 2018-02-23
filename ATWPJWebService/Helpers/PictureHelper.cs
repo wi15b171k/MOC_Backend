@@ -40,7 +40,7 @@ namespace ATWPJWebService.Helpers
 
                 using (var wrapMode = new ImageAttributes())
                 {
-                    graphics.Clear(Color.White); // white padding
+                    graphics.Clear(Color.Black); // black padding
                     graphics.DrawImage(image, posX, posY, newWidth, newHeight);
                 }
             }

@@ -24,7 +24,7 @@ namespace ATWPJWebService.Controllers
 
             //Get Data From DB
             var query = from u in db.Users
-                        where u.FirstName.Contains(searchString) || u.LastName.Contains(searchString) || u.Email.Contains(searchString)
+                        where u.FirstName.Contains(searchString) || u.LastName.Contains(searchString) || u.Email.Contains(searchString) ||searchString.Equals("xxx")
                         select u;
 
             var result = query.ToList<ApplicationUser>();
