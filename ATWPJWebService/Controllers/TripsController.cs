@@ -23,6 +23,9 @@ namespace ATWPJWebService.Controllers
             //Get Id of current User
             var requestUserId = User.Identity.GetUserId();
 
+            //Fixy Frosy
+            if (id.Equals("")) id = requestUserId;
+
             //Get Data From DB
             var query = from t in db.Trips
                         where t.UserId == id

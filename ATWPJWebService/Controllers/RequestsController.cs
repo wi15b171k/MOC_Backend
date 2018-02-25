@@ -48,7 +48,8 @@ namespace ATWPJWebService.Controllers
         }
 
         // POST api/request - add new request
-        public HttpResponseMessage Post([FromBody]string value)
+        [Route("api/Requests/{value}")]
+        public HttpResponseMessage Post(string value)
         {
             //Get Id of current User
             var userId = User.Identity.GetUserId();
@@ -67,6 +68,7 @@ namespace ATWPJWebService.Controllers
         }
 
         // PUT api/requests/5
+        [Route("api/Requests/ad/{id}")]
         public HttpResponseMessage Put(int id, [FromBody]bool value)
         {
             //Get Id of current User
