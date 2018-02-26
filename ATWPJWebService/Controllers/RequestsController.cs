@@ -87,7 +87,10 @@ namespace ATWPJWebService.Controllers
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
 
-            result.IsAccepted = value;
+
+
+            //result.IsAccepted = value;
+            result.IsAccepted = true;
             result.IsNew = false;
             db.SaveChanges();
 
